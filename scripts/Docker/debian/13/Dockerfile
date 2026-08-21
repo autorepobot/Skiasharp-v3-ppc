@@ -18,6 +18,7 @@ RUN case ${BUILD_ARCH} in \
         arm)         TOOLCHAIN_ARCH=arm-linux-gnueabihf       ; TOOLCHAIN_ARCH_SHORT=armhf   ; TOOLCHAIN_ARCH_TARGET=armv7a-linux-gnueabihf     ;; \
         arm64)       TOOLCHAIN_ARCH=aarch64-linux-gnu         ; TOOLCHAIN_ARCH_SHORT=arm64   ; TOOLCHAIN_ARCH_TARGET=aarch64-linux-gnu          ;; \
         loongarch64) TOOLCHAIN_ARCH=loongarch64-linux-gnu     ; TOOLCHAIN_ARCH_SHORT=loong64 ; TOOLCHAIN_ARCH_TARGET=loongarch64-linux-gnu      ;; \
+        ppc64le)     TOOLCHAIN_ARCH=powerpc64le-linux-gnu     ; TOOLCHAIN_ARCH_SHORT=ppc64el ; TOOLCHAIN_ARCH_TARGET=powerpc64le-linux-gnu      ;; \
         riscv64)     TOOLCHAIN_ARCH=riscv64-linux-gnu         ; TOOLCHAIN_ARCH_SHORT=riscv64 ; TOOLCHAIN_ARCH_TARGET=riscv64-linux-gnu          ;; \
         x86)         TOOLCHAIN_ARCH=i686-linux-gnu            ; TOOLCHAIN_ARCH_SHORT=i386    ; TOOLCHAIN_ARCH_TARGET=i686-linux-gnu             ;; \
         x64)         TOOLCHAIN_ARCH=x86-64-linux-gnu          ; TOOLCHAIN_ARCH_SHORT=amd64   ; TOOLCHAIN_ARCH_TARGET=x86_64-linux-gnu           ;; \
@@ -62,6 +63,7 @@ RUN . /etc/skia-env \
     && case "${TOOLCHAIN_ARCH_SHORT}" in \
          loong64) FC_VERSION=2.17.1-5   ; FC_DEV_PKG=libfontconfig-dev  ; FC_RT_PKG=libfontconfig1 ; APT_REPO=http://deb.debian.org/debian ;; \
          riscv64) FC_VERSION=2.15.0-2.3 ; FC_DEV_PKG=libfontconfig-dev  ; FC_RT_PKG=libfontconfig1 ; APT_REPO=http://deb.debian.org/debian ;; \
+         ppc64el) FC_VERSION=2.15.0-2.3 ; FC_DEV_PKG=libfontconfig-dev  ; FC_RT_PKG=libfontconfig1 ; APT_REPO=http://deb.debian.org/debian ;; \
          *)       FC_VERSION=2.13.1-4.2 ; FC_DEV_PKG=libfontconfig1-dev ; FC_RT_PKG=libfontconfig1 ; APT_REPO=http://deb.debian.org/debian ;; \
        esac \
     && TOOLCHAIN_ARCH=$(echo ${TOOLCHAIN_ARCH} | sed 's/x86-64/x86_64/g') \
